@@ -42,6 +42,14 @@ function onGalleryContainerClick(evt) {
     };
     const instance = basicLightbox.create(`<img src="${evt.target.dataset.source}">`);
     
+ instance.show()
+        window.addEventListener("keydown", onEscapeClose,{once:true})  
+              function onEscapeClose(evt) {
+        if (evt.code === "Escape") {
+            instance.close()
+        }
+        console.log(evt.code)
+    }
 };
 
 const lightbox = new SimpleLightbox('.gallery a', {
